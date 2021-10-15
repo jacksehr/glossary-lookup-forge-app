@@ -1,0 +1,22 @@
+modules:
+  confluence:contextMenu:
+    - key: glossary-lookup-hello-world
+      function: lookup
+      title: What does this mean?
+      description: Tries to look up a selected term in the company glossary
+  trigger:
+    - key: glossary-update-trigger
+      function: update
+      events:
+        - avi:confluence:updated:page
+  function:
+    - key: lookup
+      handler: index.lookup
+    - key: update
+      handler: index.update
+app:
+  id: ari:cloud:ecosystem::app/ # run `forge register` to complete this
+permissions:
+  scopes:
+    - storage:app
+    - read:confluence-content.summary
