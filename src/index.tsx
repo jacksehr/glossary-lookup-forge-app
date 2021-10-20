@@ -19,7 +19,8 @@ const App = () => {
     const { selectedText } = extensionContext as ContextMenuExtensionContext;
 
     const glossary = await getGlossary();
-    const definition = glossary?.[selectedText];
+
+    const definition = glossary.get(selectedText);
 
     if (!definition) {
       return `⚠️ We didn't find a definition for "${selectedText}"!`;
